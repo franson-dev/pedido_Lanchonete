@@ -30,8 +30,9 @@ namespace Projeto_Lanchonete
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLanchonete));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.btnResumo = new System.Windows.Forms.Button();
@@ -57,6 +58,11 @@ namespace Projeto_Lanchonete
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dgvItens = new System.Windows.Forms.DataGridView();
+            this.nItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDescrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cQtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cValorUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTotItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnAdicionaItem = new System.Windows.Forms.Button();
@@ -87,11 +93,6 @@ namespace Projeto_Lanchonete
             this.tpResumo = new System.Windows.Forms.TabPage();
             this.lstResumo = new System.Windows.Forms.ListBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.nItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDescrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cQtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cValorUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTotItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.tabControl_Detalhes.SuspendLayout();
             this.tpDados.SuspendLayout();
@@ -108,7 +109,7 @@ namespace Projeto_Lanchonete
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.btnResumo);
             this.groupBox1.Controls.Add(this.btnCancelar);
@@ -117,7 +118,7 @@ namespace Projeto_Lanchonete
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(738, 89);
+            this.groupBox1.Size = new System.Drawing.Size(720, 89);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Tag = "";
@@ -125,61 +126,66 @@ namespace Projeto_Lanchonete
             // 
             // button6
             // 
+            this.button6.BackColor = System.Drawing.Color.Transparent;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.Blue;
+            this.button6.ForeColor = System.Drawing.Color.Black;
             this.button6.Location = new System.Drawing.Point(607, 19);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(82, 52);
             this.button6.TabIndex = 4;
-            this.button6.Text = "&Fechar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Text = "Fechar";
+            this.button6.UseVisualStyleBackColor = false;
             // 
             // btnResumo
             // 
+            this.btnResumo.BackColor = System.Drawing.Color.Transparent;
             this.btnResumo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResumo.ForeColor = System.Drawing.Color.Blue;
+            this.btnResumo.ForeColor = System.Drawing.Color.Black;
             this.btnResumo.Location = new System.Drawing.Point(460, 19);
             this.btnResumo.Name = "btnResumo";
             this.btnResumo.Size = new System.Drawing.Size(82, 52);
             this.btnResumo.TabIndex = 3;
             this.btnResumo.Text = "Resumo dos Pedidos";
-            this.btnResumo.UseVisualStyleBackColor = true;
+            this.btnResumo.UseVisualStyleBackColor = false;
             this.btnResumo.Click += new System.EventHandler(this.btnResumo_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
             this.btnCancelar.Enabled = false;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.Blue;
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
             this.btnCancelar.Location = new System.Drawing.Point(317, 19);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(82, 52);
             this.btnCancelar.TabIndex = 2;
-            this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // btnGravarPedido
             // 
+            this.btnGravarPedido.BackColor = System.Drawing.Color.Transparent;
             this.btnGravarPedido.Enabled = false;
             this.btnGravarPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGravarPedido.ForeColor = System.Drawing.Color.Blue;
+            this.btnGravarPedido.ForeColor = System.Drawing.Color.Black;
             this.btnGravarPedido.Location = new System.Drawing.Point(183, 19);
             this.btnGravarPedido.Name = "btnGravarPedido";
             this.btnGravarPedido.Size = new System.Drawing.Size(82, 52);
             this.btnGravarPedido.TabIndex = 1;
-            this.btnGravarPedido.Text = "&Gravar Pedido";
-            this.btnGravarPedido.UseVisualStyleBackColor = true;
+            this.btnGravarPedido.Text = "Gravar Pedido";
+            this.btnGravarPedido.UseVisualStyleBackColor = false;
             // 
             // btnNovoPedido
             // 
+            this.btnNovoPedido.BackColor = System.Drawing.Color.Transparent;
             this.btnNovoPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovoPedido.ForeColor = System.Drawing.Color.Blue;
+            this.btnNovoPedido.ForeColor = System.Drawing.Color.Black;
             this.btnNovoPedido.Location = new System.Drawing.Point(38, 19);
             this.btnNovoPedido.Name = "btnNovoPedido";
             this.btnNovoPedido.Size = new System.Drawing.Size(82, 52);
             this.btnNovoPedido.TabIndex = 0;
-            this.btnNovoPedido.Text = "&Novo Pedido";
-            this.btnNovoPedido.UseVisualStyleBackColor = true;
+            this.btnNovoPedido.Text = "Novo Pedido";
+            this.btnNovoPedido.UseVisualStyleBackColor = false;
             this.btnNovoPedido.Click += new System.EventHandler(this.btnNovoPedido_Click);
             // 
             // tabControl_Detalhes
@@ -197,19 +203,19 @@ namespace Projeto_Lanchonete
             // 
             // tpDados
             // 
+            this.tpDados.BackColor = System.Drawing.Color.Gainsboro;
             this.tpDados.Controls.Add(this.groupBox2);
-            this.tpDados.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.tpDados.ForeColor = System.Drawing.Color.White;
             this.tpDados.Location = new System.Drawing.Point(4, 22);
             this.tpDados.Name = "tpDados";
             this.tpDados.Padding = new System.Windows.Forms.Padding(3);
             this.tpDados.Size = new System.Drawing.Size(808, 319);
             this.tpDados.TabIndex = 0;
             this.tpDados.Text = "Dados do Pedido";
-            this.tpDados.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox2.BackColor = System.Drawing.Color.LightGray;
             this.groupBox2.Controls.Add(this.lblHora);
             this.groupBox2.Controls.Add(this.btnLançarItens);
             this.groupBox2.Controls.Add(this.dtpDataPed);
@@ -220,7 +226,7 @@ namespace Projeto_Lanchonete
             this.groupBox2.Controls.Add(this.lblNumPed);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.txtCliente);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(6, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(728, 296);
@@ -231,6 +237,7 @@ namespace Projeto_Lanchonete
             // lblHora
             // 
             this.lblHora.AutoSize = true;
+            this.lblHora.ForeColor = System.Drawing.Color.Black;
             this.lblHora.Location = new System.Drawing.Point(133, 242);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(39, 13);
@@ -239,7 +246,7 @@ namespace Projeto_Lanchonete
             // 
             // btnLançarItens
             // 
-            this.btnLançarItens.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btnLançarItens.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnLançarItens.Location = new System.Drawing.Point(563, 252);
             this.btnLançarItens.Name = "btnLançarItens";
             this.btnLançarItens.Size = new System.Drawing.Size(139, 38);
@@ -259,6 +266,7 @@ namespace Projeto_Lanchonete
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(53, 199);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 24);
@@ -269,6 +277,7 @@ namespace Projeto_Lanchonete
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(56, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 24);
@@ -287,6 +296,7 @@ namespace Projeto_Lanchonete
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(29, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 24);
@@ -297,6 +307,7 @@ namespace Projeto_Lanchonete
             // 
             this.lblNumPed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblNumPed.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumPed.ForeColor = System.Drawing.Color.Black;
             this.lblNumPed.Location = new System.Drawing.Point(125, 16);
             this.lblNumPed.Name = "lblNumPed";
             this.lblNumPed.Size = new System.Drawing.Size(95, 38);
@@ -308,6 +319,7 @@ namespace Projeto_Lanchonete
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(14, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 24);
@@ -323,7 +335,7 @@ namespace Projeto_Lanchonete
             // 
             // tpItens
             // 
-            this.tpItens.BackColor = System.Drawing.SystemColors.Highlight;
+            this.tpItens.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.tpItens.Controls.Add(this.lblTotalPed);
             this.tpItens.Controls.Add(this.label13);
             this.tpItens.Controls.Add(this.label11);
@@ -382,6 +394,7 @@ namespace Projeto_Lanchonete
             // dgvItens
             // 
             this.dgvItens.AllowUserToAddRows = false;
+            this.dgvItens.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nItem,
@@ -395,6 +408,45 @@ namespace Projeto_Lanchonete
             this.dgvItens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItens.Size = new System.Drawing.Size(383, 247);
             this.dgvItens.TabIndex = 1;
+            // 
+            // nItem
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.nItem.DefaultCellStyle = dataGridViewCellStyle1;
+            this.nItem.HeaderText = "Item";
+            this.nItem.Name = "nItem";
+            this.nItem.ReadOnly = true;
+            this.nItem.Width = 35;
+            // 
+            // cDescrição
+            // 
+            this.cDescrição.HeaderText = "Descrição";
+            this.cDescrição.Name = "cDescrição";
+            this.cDescrição.ReadOnly = true;
+            this.cDescrição.Width = 127;
+            // 
+            // cQtd
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.cQtd.DefaultCellStyle = dataGridViewCellStyle2;
+            this.cQtd.HeaderText = "Qtd";
+            this.cQtd.Name = "cQtd";
+            this.cQtd.ReadOnly = true;
+            this.cQtd.Width = 35;
+            // 
+            // cValorUnit
+            // 
+            this.cValorUnit.HeaderText = "$Unit";
+            this.cValorUnit.Name = "cValorUnit";
+            this.cValorUnit.ReadOnly = true;
+            this.cValorUnit.Width = 65;
+            // 
+            // cTotItem
+            // 
+            this.cTotItem.HeaderText = "Total";
+            this.cTotItem.Name = "cTotItem";
+            this.cTotItem.ReadOnly = true;
+            this.cTotItem.Width = 70;
             // 
             // groupBox3
             // 
@@ -506,9 +558,9 @@ namespace Projeto_Lanchonete
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(93, 20);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(71, 17);
+            this.checkBox4.Size = new System.Drawing.Size(80, 17);
             this.checkBox4.TabIndex = 3;
-            this.checkBox4.Text = "Pimenta";
+            this.checkBox4.Text = "Vinagrete";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox3
@@ -655,9 +707,9 @@ namespace Projeto_Lanchonete
             this.cmbPreçoL.Enabled = false;
             this.cmbPreçoL.FormattingEnabled = true;
             this.cmbPreçoL.Items.AddRange(new object[] {
-            "R$ 25,00",
-            "R$ 30,00",
-            "R$ 40,00"});
+            "R$ 20,00",
+            "R$ 18,00",
+            "R$ 15,00"});
             this.cmbPreçoL.Location = new System.Drawing.Point(148, 62);
             this.cmbPreçoL.Name = "cmbPreçoL";
             this.cmbPreçoL.Size = new System.Drawing.Size(70, 21);
@@ -677,18 +729,20 @@ namespace Projeto_Lanchonete
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 26);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 13);
+            this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Lanche:";
+            this.label5.Text = "Pastel:";
             // 
             // cmbLanche
             // 
+            this.cmbLanche.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.cmbLanche.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLanche.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cmbLanche.FormattingEnabled = true;
             this.cmbLanche.Items.AddRange(new object[] {
-            "X-Sabedoria",
-            "X-Verdade",
-            "X-Humildade"});
+            "Pastel de Flango & Catupily",
+            "Pastel Legolas com Queijo",
+            "Pastel Gandalf doce"});
             this.cmbLanche.Location = new System.Drawing.Point(9, 62);
             this.cmbLanche.Name = "cmbLanche";
             this.cmbLanche.Size = new System.Drawing.Size(126, 21);
@@ -708,12 +762,12 @@ namespace Projeto_Lanchonete
             // 
             // tpResumo
             // 
-            this.tpResumo.BackColor = System.Drawing.SystemColors.Highlight;
+            this.tpResumo.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.tpResumo.Controls.Add(this.lstResumo);
-            this.tpResumo.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.tpResumo.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.tpResumo.Location = new System.Drawing.Point(4, 22);
             this.tpResumo.Name = "tpResumo";
-            this.tpResumo.Size = new System.Drawing.Size(757, 319);
+            this.tpResumo.Size = new System.Drawing.Size(808, 319);
             this.tpResumo.TabIndex = 2;
             this.tpResumo.Text = "Resumo dos Pedidos";
             // 
@@ -731,51 +785,17 @@ namespace Projeto_Lanchonete
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // nItem
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.nItem.DefaultCellStyle = dataGridViewCellStyle9;
-            this.nItem.HeaderText = "Item";
-            this.nItem.Name = "nItem";
-            this.nItem.ReadOnly = true;
-            this.nItem.Width = 35;
-            // 
-            // cDescrição
-            // 
-            this.cDescrição.HeaderText = "Descrição";
-            this.cDescrição.Name = "cDescrição";
-            this.cDescrição.Width = 127;
-            // 
-            // cQtd
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.cQtd.DefaultCellStyle = dataGridViewCellStyle10;
-            this.cQtd.HeaderText = "Qtd";
-            this.cQtd.Name = "cQtd";
-            this.cQtd.ReadOnly = true;
-            this.cQtd.Width = 35;
-            // 
-            // cValorUnit
-            // 
-            this.cValorUnit.HeaderText = "$Unit";
-            this.cValorUnit.Name = "cValorUnit";
-            this.cValorUnit.Width = 65;
-            // 
-            // cTotItem
-            // 
-            this.cTotItem.HeaderText = "Total";
-            this.cTotItem.Name = "cTotItem";
-            this.cTotItem.Width = 70;
-            // 
             // frmLanchonete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(831, 505);
             this.Controls.Add(this.tabControl_Detalhes);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLanchonete";
-            this.Text = "Lanchonete Saberes";
+            this.Text = "O SENHOR DOS PASTEIS ";
             this.groupBox1.ResumeLayout(false);
             this.tabControl_Detalhes.ResumeLayout(false);
             this.tpDados.ResumeLayout(false);
