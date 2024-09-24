@@ -114,11 +114,29 @@ namespace Projeto_Lanchonete
 
         private void btnAdicionaItem_Click(object sender, EventArgs e)
         {
-            dgvItens.Rows.Add(++contItem, cmbLanche.SelectedItem, txtQtd.Text, cmbPreçoL.SelectedItem, lblTotal.Text.Substring(2));
-            lblTotalPed.Text = 
-                (double.Parse(lblTotalPed.Text.Substring(3)) + 
-                double.Parse(lblTotal.Text.Substring(2))).ToString("C");
-            dgvItens.FirstDisplayedScrollingRowIndex = dgvItens.Rows.Count - 1;
+            try
+            {
+                dgvItens.Rows.Add(++contItem, cmbLanche.SelectedItem, txtQtd.Text, cmbPreçoL.SelectedItem, lblTotal.Text.Substring(2));
+                lblTotalPed.Text =
+                    (double.Parse(lblTotalPed.Text.Substring(3)) +
+                    double.Parse(lblTotal.Text.Substring(2))).ToString("C");
+                dgvItens.FirstDisplayedScrollingRowIndex = dgvItens.Rows.Count - 1;
+
+                if (rdbCondSim.Checked)
+                {
+                    foreach (CheckBox checkBox in grbOpcoesCond.Controls)
+                    {
+                        if (checkBox.Checked)
+                        {
+                            dgvItens.Rows.Add("", checkBox.Text, "", "", "");
+                        }
+                    }
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Insira um produto.");
+            }
 
         }
     }
