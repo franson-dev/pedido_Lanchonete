@@ -48,9 +48,9 @@ namespace Projeto_Lanchonete
             tabControl_Detalhes.SelectedTab = tpItens;
         }
 
-        private void cmbLanche_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbProdutos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbPreçoL.SelectedIndex = cmbLanche.SelectedIndex;
+            cmbPreçoL.SelectedIndex = cmbProduto.SelectedIndex;
             txtQtd.Text = "1";
             lblTotal.Text = (double.Parse(cmbPreçoL.Text.Substring(2))
                 * int.Parse(txtQtd.Text)).ToString("C");
@@ -87,57 +87,27 @@ namespace Projeto_Lanchonete
             txtQtd.SelectAll();
         }
 
-        private void rdbCondSim_CheckedChanged(object sender, EventArgs e)
-        {
-            grbOpcoesCond.Enabled = true;
-        }
-
-        private void rdbCondNão_CheckedChanged(object sender, EventArgs e)
-        {
-            grbOpcoesCond.Enabled = false;
-        }
-
-        private void rdbBebSim_CheckedChanged(object sender, EventArgs e)
-        {
-            grbBebida.Enabled = true;
-        }
-
-        private void rdbBebNão_CheckedChanged(object sender, EventArgs e)
-        {
-            grbBebida.Enabled = false;
-        }
-
-        private void cmbLanche_DropDown(object sender, EventArgs e)
+        private void cmbProdutos_DropDown(object sender, EventArgs e)
         {
            
         }
 
         private void btnAdicionaItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dgvItens.Rows.Add(++contItem, cmbLanche.SelectedItem, txtQtd.Text, cmbPreçoL.SelectedItem, lblTotal.Text.Substring(2));
-                lblTotalPed.Text =
-                    (double.Parse(lblTotalPed.Text.Substring(3)) +
-                    double.Parse(lblTotal.Text.Substring(2))).ToString("C");
-                dgvItens.FirstDisplayedScrollingRowIndex = dgvItens.Rows.Count - 1;
+            if (cmbProduto.SelectedIndex != 0 || cmbBebida.SelectedIndex != 0) {
+                if (cmbProduto.SelectedIndex != 0) {
+                    dgvItens.Rows.Add(++contItem, cmbProduto.SelectedItem, txtQtd.Text, cmbPreçoL.SelectedItem, lblTotal.Text.Substring(2));
+                    lblTotalPed.Text =
+                        (double.Parse(lblTotalPed.Text.Substring(3)) +
+                        double.Parse(lblTotal.Text.Substring(2))).ToString("C");
+                    dgvItens.FirstDisplayedScrollingRowIndex = dgvItens.Rows.Count - 1;
+                }
 
-                if (rdbCondSim.Checked)
+                if (cmbBebida.SelectedIndex != 0)
                 {
-                    foreach (CheckBox checkBox in grbOpcoesCond.Controls)
-                    {
-                        if (checkBox.Checked)
-                        {
-                            dgvItens.Rows.Add("", checkBox.Text, "", "", "");
-                        }
-                    }
+                    dgvItens.Rows.Add("", cmbBebida.Text,"","");
                 }
             }
-            catch (ArgumentOutOfRangeException)
-            {
-                MessageBox.Show("Insira um produto.");
-            }
-
         }
     }
 }
